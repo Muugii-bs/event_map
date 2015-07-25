@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
     <title>Google Maps V3</title>
@@ -9,6 +9,7 @@
         {
             var lng = 139.762087;
             var lat = 35.713290;
+            var img_src = "/Users/AppBs/Work_master/Hackathon2015_5_25/event_map/app/static/img/";
 
             var mapCenter = new google.maps.LatLng(lat, lng);
             var mapOptions = {
@@ -20,7 +21,7 @@
             var mapObj = new google.maps.Map(document.getElementById('gmap'), mapOptions);
 
             // マーカー用変数の設定
-            var markerUrl = new Array("exhibit.png","jobhunt.png","network.png","study.png","university.png","other.png");
+            var markerUrl = new Array("../static/img/exhibit_marker_yellow.png","../static/img/job_marker_yellow.png","../static/img/networking_marker_yellow.png","../static/img/seminar_marker_yellow.png","../static/img/university_marker_yellow.png","../static/img/other_marker_yellow.png");
             var markerSize = new google.maps.Size(30, 30);
             var originPoint = new google.maps.Point(0, 0);
             var anchorPoint = new google.maps.Point(15, 30);
