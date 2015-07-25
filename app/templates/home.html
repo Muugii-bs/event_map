@@ -3,33 +3,34 @@
   <div class="jumbo">
    	<div class="col-md-8">
     <!-- Embedded Google Map using an iframe - to select your location find it on Google maps and paste the link as the iframe src. If you want to use the Google Maps API instead then have at it! -->
-   	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6479.139434612352!2d139.76553093745238!3d35.712204760068886!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x30e407498313ba95!2sThe+University+of+Tokyo!5e0!3m2!1sen!2sjp!4v1437801283369" width="600" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+   	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6479.139434612352!2d139.76553093745238!3d35.712204760068886!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x30e407498313ba95!2sThe+University+of+Tokyo!5e0!3m2!1sen!2sjp!4v1437801283369" width="700" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
    	<div class="search">
-    	<br><br>開催期間：<br>
-  	<select>
-  		<option value="1">1ヶ月</option>
-  		<option value="2">2ヶ月</option>
-  		<option value="3">3ヶ月</option> 
-  		<option value="4">4ヶ月</option> 
-  		<option value="5">5ヶ月</option> 
-  		<option value="6">6ヶ月</option> 
-  		<option value="7">7ヶ月</option> 
-  		<option value="8">8ヶ月</option> 
-  		<option value="9">9ヶ月</option> 
-  		<option value="10">10ヶ月</option> 
-  		<option value="11">11ヶ月</option> 
-  		<option value="12">12ヶ月</option>
-  	</select>
-	<br><br>イベントカテゴリ：	<br>	
-  	<form action="{{ url_for('home') }}" method=post class=add-entry>
-  		<input type="checkbox" name="event" value="seminar" checked> 勉強会 <br>
-  		<input type="checkbox" name="event" value="networking" > 交流会<br>
-  		<input type="checkbox" name="event" value="exhbit"> 展示会<br>
-  		<input type="checkbox" name="event" value="university"> 大学関係<br>
-  		<input type="checkbox" name="event" value="job"> 就活イベント<br>
-  		<input type="checkbox" name="event" value="other"> その他<br>
-  		<input type="submit" value="検索">
-    </form>
+   		<form action="{{ url_for('home') }}" method="post" class="add-entry">
+    		<br><br>開催期間：<br>
+  			<select name="deadline">
+  				<option value="1">1ヶ月</option>
+  				<option value="2">2ヶ月</option>
+  				<option value="3">3ヶ月</option> 
+  				<option value="4">4ヶ月</option> 
+  				<option value="5">5ヶ月</option> 
+  				<option value="6">6ヶ月</option> 
+  			<!--<option value="7">7ヶ月</option> 
+  				<option value="8">8ヶ月</option> 
+  				<option value="9">9ヶ月</option> 
+  				<option value="10">10ヶ月</option> 
+  				<option value="11">11ヶ月</option> 
+  				<option value="12">12ヶ月</option>-->
+  				<option value="999">7ヶ月以降</option>
+  			</select>
+			<br><br>イベントカテゴリ：	<br>	
+  			<img src="../static/img/seminar.png" height="30" width="30"> 勉強会 <input type="checkbox" name="seminar" value="1"><br>
+  			<img src="../static/img/networking.png" height="30" width="30"> 交流会 <input type="checkbox" name="networking" value="1"><br>
+  			<img src="../static/img/exhibit.png" height="30" width="30"> 展示会 <input type="checkbox" name="exhbit" value="1"><br>
+  			<img src="../static/img/university.png" height="30" width="30"> 大学関係 <input type="checkbox" name="university" value="1"><br>
+  			<img src="../static/img/job.png" height="30" width="30"> 就活イベント <input type="checkbox" name="job" value="1"><br>
+  			<img src="../static/img/other.png" height="30" width="30"> その他 <input type="checkbox" name="other" value="1"><br>
+  			<input type="submit" value="検索" value="1">
+    	</form>
   </div>
  </div>
   <div class="search">
