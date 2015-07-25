@@ -28,9 +28,9 @@ def home():
 	event_dict = json.dumps(c)
 	c = query_db('SELECT * FROM building')
 	build_dict = json.dumps(c)
-	return("<html><body> %s <br><br> %s </body></html>" %(event_dict, build_dict))
+	#return("<html><body> %s <br><br> %s </body></html>" %(event_dict, build_dict))
 	if request.method == 'GET':
-		return render_template('home.html')
+		return render_template('marker.html')
 	if request.method == 'POST':
 		return("<html><body> %s %s </body></html>" %(request.form['deadline'], request.form['seminar'])) 
 
