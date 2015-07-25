@@ -1,5 +1,28 @@
 google.maps.event.addDomListener(window, 'load', function()
         {
+            var result {};
+            $ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: 'localhost:5000/search',
+                data: data,
+                cache: false
+            }).done(function(json){
+                if(!json.error.length){
+                    result.data = json.data;
+                    if(json.data.length){
+                        pick_result();
+                    }    
+                    else {
+                        alert('データを取得できませんでした。');
+                    }
+                }
+                else {
+                    alert(json.error.join("\n"));
+                }).fail(function(data){
+                    alert('データ取得に失敗しました。');
+            });
+                
             var lng = 139.762087;
             var lat = 35.713290;
             var img_src = "/Users/AppBs/Work_master/Hackathon2015_5_25/event_map/app/static/img/";
