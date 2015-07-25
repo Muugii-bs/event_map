@@ -41,6 +41,14 @@ header h1.logo:hover {
   width: 940px;
   margin: 0 auto;
 }
+
+div.yellow_line {
+  position: relative;
+  top: 0px;
+  background-color: #FBBF00;
+  height: 5px;
+  width: 100%;
+}
  
 div.jumbo {
   position: relative;
@@ -51,7 +59,13 @@ div.jumbo {
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
- 
+
+div.search {
+  float: right;
+  position: relative;
+  right: 80px;
+} 
+
 h2 {
   font-size: 3em;
   margin-top: 40px;
@@ -86,6 +100,6 @@ h3 {
 }
  
 .menu li a {
-  color: #999;
+  color: #000;
   text-decoration: none;
 }
