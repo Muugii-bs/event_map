@@ -19,6 +19,9 @@ def query_db(query, args=(), one=False):
     cur.connection.close()
     return (r[0] if r else None) if one else r
 
+def display_labels():
+	print ''    
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
 	c = query_db('SELECT * FROM event')
@@ -40,4 +43,5 @@ if __name__ == '__main__':
 
 @app.teardown_appcontext
 def close_db(error):
-    g.db.close()
+    if hasattr(error):
+    	g.sqlite_db.close()	
