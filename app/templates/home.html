@@ -3,7 +3,10 @@
   <div class="jumbo">
    	<div class="col-md-8">
     <!-- Embedded Google Map using an iframe - to select your location find it on Google maps and paste the link as the iframe src. If you want to use the Google Maps API instead then have at it! -->
-   	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6479.139434612352!2d139.76553093745238!3d35.712204760068886!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x30e407498313ba95!2sThe+University+of+Tokyo!5e0!3m2!1sen!2sjp!4v1437801283369" width="700" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+   	<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6479.139434612352!2d139.76553093745238!3d35.712204760068886!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x30e407498313ba95!2sThe+University+of+Tokyo!5e0!3m2!1sen!2sjp!4v1437801283369" width="700" height="600" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+
+   	<div id="gmap" style="width: 600px; height: 370px; border: 1px solid Gray;"></div>
+
    	<div class="search">
    		<form action="{{ url_for('home') }}" method="post" class="add-entry">
     		<br><br>開催期間：<br>
