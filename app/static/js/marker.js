@@ -1,43 +1,48 @@
-var map;
-var infowindow;
+google.maps.event.addDomListener(window, 'load', function()
+        {
+            var lng = 139.762087;
+            var lat = 35.713290;
+            var img_src = "/Users/AppBs/Work_master/Hackathon2015_5_25/event_map/app/static/img/";
 
-function initialize() {
-  var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+            var mapCenter = new google.maps.LatLng(lat, lng);
+            var mapOptions = {
+                zoom: 15,
+                center: mapCenter,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scaleControl: true
+            };
+            var mapObj = new google.maps.Map(document.getElementById('gmap'), mapOptions);
 
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center: pyrmont,
-    zoom: 15
-  });
+            // マーカー用変数の設定
+            var markerUrl = new Array("../static/img/exhibit_marker_yellow.png","../static/img/job_marker_yellow.png","../static/img/networking_marker_yellow.png","../static/img/seminar_marker_yellow.png","../static/img/university_marker_yellow.png","../static/img/other_marker_yellow.png");
+            var markerSize = new google.maps.Size(30, 30);
+            var originPoint = new google.maps.Point(0, 0);
+            var anchorPoint = new google.maps.Point(15, 30);
+            var markerImg = null;
 
-  var request = {
-    location: pyrmont,
-    radius: 500,
-    types: ['store']
-  };
-  infowindow = new google.maps.InfoWindow();
-  var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-}
+            // 各アイコンの座標位置
+            var latlngs = new Array(
+                // kou2 35.714244, 139.761877
+                new google.maps.LatLng(35.714244, 139.761877),
+                // yasuda 35.713447, 139.762350
+                new google.maps.LatLng(35.713447, 139.762350),
+                // rigaku 35.709553, 139.761178
+                new google.maps.LatLng(35.709553, 139.761178)
+            );
 
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
-
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
+            for (var i = 0; i < latlngs.length; i++) {
+                // マーカー画像を作成
+                var markerImg = new google.maps.MarkerImage(
+                    markerUrl[i],
+                    markerSize,
+                    originPoint,
+                    anchorPoint
+                );
+                // マーカーを作成
+                new google.maps.Marker({
+                    position: latlngs[i],
+                    map: mapObj,
+                    icon: markerImg
+                });
+            }
+        });
