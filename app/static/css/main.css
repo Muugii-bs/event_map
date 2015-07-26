@@ -52,12 +52,18 @@ div.yellow_line {
  
 div.jumbo {
   position: relative;
+  height: 700px;
   top: 10px;
   padding: 10px 0 30px 0;
   background-color: #eeeeee;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
+}
+
+#gmap {
+  float: left;
+  width: 60%;
 }
 
 div.search {

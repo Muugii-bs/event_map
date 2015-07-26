@@ -1,5 +1,6 @@
 google.maps.event.addDomListener(window, 'load', function()
         {
+<<<<<<< HEAD
 	    // マーカー表示状態
 
 	    // イベント数から
@@ -8,6 +9,31 @@ google.maps.event.addDomListener(window, 'load', function()
 	    var flags_num = new Array(0,2,1,3);
 	    var zoom = 15;
 	    var zoom_bef = 15;
+=======
+            var result {};
+            $ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: 'localhost:5000/search',
+                data: data,
+                cache: false
+            }).done(function(json){
+                if(!json.error.length){
+                    result.data = json.data;
+                    if(json.data.length){
+                        pick_result();
+                    }    
+                    else {
+                        alert('データを取得できませんでした。');
+                    }
+                }
+                else {
+                    alert(json.error.join("\n"));
+                }).fail(function(data){
+                    alert('データ取得に失敗しました。');
+            });
+                
+>>>>>>> 187c8fa9f625291106b229b67989b00ad0269edf
             var lng = 139.762087;
             var lat = 35.713290;
             var img_src = "/Users/AppBs/Work_master/Hackathon2015_5_25/event_map/app/static/img/";
