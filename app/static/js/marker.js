@@ -48,6 +48,7 @@ google.maps.event.addDomListener(window, 'load', function()
             };
             var mapObj = new google.maps.Map(document.getElementById('gmap'), mapOptions);
 	    var marker_list = new google.maps.MVCArray();
+	    var infowindow;
 
             // マーカー用変数の設定
 	    var markerUrl_num = new Array("../static/img/1_markers.png","../static/img/2_markers.png","../static/img/3_markers.png","../static/img/4_markers.png","../static/img/5_markers.png","../static/img/other_marker_yellow.png");
@@ -56,6 +57,10 @@ google.maps.event.addDomListener(window, 'load', function()
 	    var markerUrl_eve = new Array("","","","","","","","","","");
 	    var markerUrl_bui = new Array("","","","");
 	    var genre = new Array(1,3,5,2,6,2,1,3,2,4);
+
+	    // 適当なイベントデータ
+	    var c_string = new Array('00','アントレ道場ハッカソン','勉強会','産学連携プラザ','15/07/26','Hack+Marathonで課題解決しましょう！');
+	    var contentString == '<b style="color: Blue;">ID</b> : ' + c_string[0] + '\t ジャンル: ' + c_string[2] + '\nイベント名: ' + c_string[1] +  '\n 開催＠' + c_string[3] + '\t 申込〆切: ' + c_string[4] + '\n 詳細: ' + c_string[5];
 
             var markerSize = new google.maps.Size(30, 30);
             var originPoint = new google.maps.Point(0, 0);
@@ -76,6 +81,8 @@ google.maps.event.addDomListener(window, 'load', function()
 		//
 		new google.maps.Latlng(35.714844, 139.761177)
             );
+	    var latlng_eve = new Array(latlngs[3],latlngs[0],latlngs[5],latlngs[1],latlngs[4],latlngs[2],latlngs[3],latlngs[5],latlngs[0],latlngs[2]);
+	    var latlng_bui = new Array(latlngs[0],latlngs[3],latlngs[2],latlngs[1]);
 
             for (var i = 0; i < 5; i++) {
                 // マーカー画像を作成
@@ -94,6 +101,11 @@ google.maps.event.addDomListener(window, 'load', function()
 		marker_list.push(marker);
             }
 
+	    for (var i = 0; i < marker_list.length; i++){
+		google.maps.event.addListener(marker_list[i], 'click', function() {
+		    showInfoWindow(this);
+		});
+	    }
 
 	    google.maps.event.addListener(map, 'zoom_changed',function(){
 		zoom = this.getZoom();
@@ -109,6 +121,14 @@ google.maps.event.addDomListener(window, 'load', function()
 		}
 		zoom_bef = zoom;
 	    });	    
+
+	    function showInfoWindow(obj){
+		if(infowindow) infowindow.close();
+		infowindow = new gooogle.maps.InfoWindow({
+		    content: contentString
+		});
+		infowindow.open(mapObj,obj);
+	    }
 
 	    function display_marker_pict(){
 		var add = 0;
@@ -134,7 +154,7 @@ google.maps.event.addDomListener(window, 'load', function()
                     );
                     // マーカーを作成                                      
 		    var marker = new google.maps.Marker({
-			position: latlngs[i],
+			position: latlng_eve[i],
 			map: mapObj,
 			icon: markerImg
 		    });
@@ -175,7 +195,7 @@ google.maps.event.addDomListener(window, 'load', function()
                     );
                     // マーカーを作成                                      
                     var marker = new google.maps.Marker({
-                        position: latlngs[i],
+                        position: latlng_bui[i],
                         map: mapObj,
                         icon: markerImg
                     });
