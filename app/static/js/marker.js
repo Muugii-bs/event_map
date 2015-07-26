@@ -33,7 +33,7 @@ google.maps.event.addDomListener(window, 'load', function()
 	    var genre = new Array(1,3,5,2,6,2,1,3,2,4);
 
 	    // 適当なイベントデータ
-	    var c_string = new Array('00','アントレ道場ハッカソン','勉強会','産学連携プラザ','15/07/26','Hack+Marathonで課題解決しましょう！');
+	    var c_string = new Array('00','アントレ道場ハッカソン','勉強会','産学連携プラザ','15/07/26','Hack+Marathonで課題解決しましょう！\n http://www.ducr.u-tokyo.ac.jp/jp/venture/dojo/dojosummer/2015/index.html');
 	    var contentString == '<b style="color: Blue;">ID</b> : ' + c_string[0] + '\t ジャンル: ' + c_string[2] + '\nイベント名: ' + c_string[1] +  '\n 開催＠' + c_string[3] + '\t 申込〆切: ' + c_string[4] + '\n 詳細: ' + c_string[5];
 
             var markerSize = new google.maps.Size(30, 30);
