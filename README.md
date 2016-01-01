@@ -18,3 +18,4 @@ EVENT FINDER
 ### 用いた技術：
 1. Flask（http://flask.pocoo.org/）フレームワーク
 2. GoogleマップAPI
+3. Ajax
